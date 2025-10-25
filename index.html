@@ -6,7 +6,7 @@
     <title>Slip-a-Swole</title>
     <link rel="icon" href="favicon.ico?" type="image/x-icon">
   </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0; background-color: #000000; color: #EEEE00">
+  <body style="text-align: center; justify-content: center; padding: 0; border: 0; margin: 0; background-color: #000000; color: #EEEE00">
     <canvas id="unity-canvas" tabindex="-1" style="width: 96%; height: auto; background: #000000"></canvas>
     <p>The Swoleminations have escaped from the lab deep in the Swole Cave and most of them are just as ready to smash any unwitting monKeys as Swole Torchic.</p>
     <p>That's bad news for Dodger, who has become accustomed to slipping Swoles of all the same size in the past months.</p>
@@ -21,7 +21,6 @@
     <p>You may donate to the creator at <b>ban_34pe1pxqxi9hhuzxk99z6oad4oqtetjzq1xxyxm43nbzfmib9pmxj5ie18m3</b> or <b>dreaming.ban</b></p>
     <p>You may also donate to the Slip-a-Swole faucet wallet at <b>ban_3sasp5kddnz7n9gi56ijidc6yi6butjguwbg1cfgiyjqunhhotbgddh4zx1z</b></p>
     <p>Follow <a href="https://banano.cc/">this link</a> to learn more about banano at <a href="https://banano.cc/">banano.cc</a>, and <a href="https://thebananostand.com/">this link</a> to get a free browser wallet at <a href="https://thebananostand.com/">thebananostand.com</a></p>
-    <div id="debby"></div>
     <script src="Build/build.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -31,22 +30,22 @@
         document.getElementsByTagName('head')[0].appendChild(meta);
 
         var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "96%";
-        canvas.style.height = "auto";
         canvas.style.position = "fixed";
-        document.body.style.textAlign = "left";
 
-        const debber = document.getElementById('debby');
+        function resizeCanv(){
+          const vp = window.visualViewport || {width: window.innerWidth, height: window.innerHeight};
+          canvas.style.width = `${vp.width*0.96}px`;
+          canvas.style.height = `${vp.height*0.96}px`;
+        }
 
-        window.addEventListener('resize', () => resizeCanv(canvas,debber));
-        window.addEventListener('scroll', () => resizeCanv(canvas,debber));
-      }
-
-      function resizeCanv(c,d){
-        const vp = window.visualViewport;
-        c.style.width = `${vp.width*0.96}px`;
-        c.style.height = `${vp.height*0.96}px`;
-        d.innerText = `${vp.width}, ${vp.height}`;
+        resizeCanv();
+        if(window.visualViewport){
+          window.visualViewport.addEventListener('resize',resizeCanv());
+          window.visualViewport.addEventListener('scroll',resizeCanv());
+        }else{
+          window.addEventListener('resize',resizeCanv());
+        }
+        
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
