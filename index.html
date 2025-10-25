@@ -36,16 +36,16 @@
         canvas.style.position = "fixed";
         document.body.style.textAlign = "left";
 
-        const debber = document.getElementByID('debby');
+        const debber = document.getElementById('debby');
 
-        window.addEventListener('resize', resizeCanv(canvas,debber));
-        window.addEventListener('scroll', resizeCanv(canvas,debber));
+        window.addEventListener('resize', () => resizeCanv(canvas,debber));
+        window.addEventListener('scroll', () => resizeCanv(canvas,debber));
       }
 
       function resizeCanv(c,d){
         const vp = window.visualViewport;
-        c.style.width = vp.width*0.96;
-        c.style.height = vp.height*0.96;
+        c.style.width = `${vp.width*0.96}px`;
+        c.style.height = `${vp.height*0.96}px`;
         d.innerText = `${vp.width}, ${vp.height}`;
       }
 
