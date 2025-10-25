@@ -29,8 +29,9 @@
         meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
         document.getElementsByTagName('head')[0].appendChild(meta);
 
-        var canvas = document.querySelector("#unity-canvas");
-        canvas.style.position = "fixed";
+        var canvas = document.querySelector('#unity-canvas');
+        canvas.style.position = 'fixed';
+        canvas.style.left = 0;
 
         function resizeCanv(){
           const vp = window.visualViewport || {width: window.innerWidth, height: window.innerHeight};
