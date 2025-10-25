@@ -21,6 +21,7 @@
     <p>You may donate to the creator at <b>ban_34pe1pxqxi9hhuzxk99z6oad4oqtetjzq1xxyxm43nbzfmib9pmxj5ie18m3</b> or <b>dreaming.ban</b></p>
     <p>You may also donate to the Slip-a-Swole faucet wallet at <b>ban_3sasp5kddnz7n9gi56ijidc6yi6butjguwbg1cfgiyjqunhhotbgddh4zx1z</b></p>
     <p>Follow <a href="https://banano.cc/">this link</a> to learn more about banano at <a href="https://banano.cc/">banano.cc</a>, and <a href="https://thebananostand.com/">this link</a> to get a free browser wallet at <a href="https://thebananostand.com/">thebananostand.com</a></p>
+    <div id="debby"></div>
     <script src="Build/build.loader.js"></script>
     <script>
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
@@ -35,14 +36,17 @@
         canvas.style.position = "fixed";
         document.body.style.textAlign = "left";
 
-        window.addEventListener('resize', resizeCanv(canvas));
-        window.addEventListener('scroll', resizeCanv(canvas));
+        const debber = document.getElementByID('debby');
+
+        window.addEventListener('resize', resizeCanv(canvas,debber));
+        window.addEventListener('scroll', resizeCanv(canvas,debber));
       }
 
-      function resizeCanv(c){
+      function resizeCanv(c,d){
         const vp = window.visualViewport;
         c.style.width = vp.width*0.96;
         c.style.height = vp.height*0.96;
+        d.innerText = `${vp.width}, ${vp.height}`;
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
