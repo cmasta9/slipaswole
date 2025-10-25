@@ -33,8 +33,16 @@
         canvas.style.width = "96%";
         canvas.style.height = "auto";
         canvas.style.position = "fixed";
-
         document.body.style.textAlign = "left";
+
+        window.addEventListener('resize', resizeCanv(canvas));
+        window.addEventListener('scroll', resizeCanv(canvas));
+      }
+
+      function resizeCanv(c){
+        const vp = window.visualViewport;
+        c.style.width = vp.width*0.96;
+        c.style.height = vp.height*0.96;
       }
 
       createUnityInstance(document.querySelector("#unity-canvas"), {
